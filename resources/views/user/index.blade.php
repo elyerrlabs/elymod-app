@@ -584,6 +584,6 @@
                     $('#sidebar').removeClass('-translate-x-full');
                 }
             });
-        })(jQuery);
+        });
     </script>
 @endpush
