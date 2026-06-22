@@ -1,0 +1,5 @@
+vendor/
+vendor-*
+build/
+node_modules/
+installed-package.php

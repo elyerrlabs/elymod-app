@@ -1,0 +1,27 @@
+{
+  "name": "elyerr/elymod-app",
+  "type": "project",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "ElymodApp\\App\\": "app/",
+      "ElymodApp\\Database\\Factories\\": "database/factories/",
+      "ElymodApp\\Database\\Seeders\\": "database/seeders/",
+      "ElymodApp\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "ElymodApp\\App\\Providers\\AppServiceProvider",
+        "ElymodApp\\App\\Providers\\RouteServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "stable",
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
+  }
+}
