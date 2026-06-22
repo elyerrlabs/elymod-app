@@ -4,55 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cc250d64868dc888c4d8d23be06353bc",
-    "packages": [
-        {
-            "name": "elyerr/api-response",
-            "version": "v1.0.0",
-            "source": {
-                "type": "git",
-                "url": "git@gitlab.com:elyerr/api-response.git",
-                "reference": "d834a48a163b45cc5744f59435ec49b2c4bc8cee"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/elyerr%2Fapi-response/repository/archive.zip?sha=d834a48a163b45cc5744f59435ec49b2c4bc8cee",
-                "reference": "d834a48a163b45cc5744f59435ec49b2c4bc8cee",
-                "shasum": ""
-            },
-            "require-dev": {
-                "laravel/framework": "^9.0",
-                "php": "^8.0.2",
-                "phpunit/phpunit": "^10.4",
-                "spatie/laravel-fractal": "^6.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Elyerr\\ApiResponse\\ServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Elyerr\\ApiResponse\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "AGPL-3.0-only"
-            ],
-            "authors": [
-                {
-                    "name": "Elvis  Yerel Roman Concha",
-                    "email": "yerel9212@yahoo.es"
-                }
-            ],
-            "description": "Proporciona funcionalidad extra a una API bajo el framework Laravel",
-            "time": "2023-10-21T20:17:46+00:00"
-        }
-    ],
+    "content-hash": "bf46d5b2de6c47ea9ad09e88c1ddc38b",
+    "packages": [],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
