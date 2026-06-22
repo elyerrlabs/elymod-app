@@ -1,5 +1,7 @@
+!public/*.
+!public/.*
+!public/.gitignore
 vendor/
-vendor-*
-build/
+vendor-build/
 node_modules/
 installed-package.php
