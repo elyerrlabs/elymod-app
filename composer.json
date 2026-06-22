@@ -13,15 +13,11 @@
   "extra": {
     "laravel": {
       "providers": [
-        "ElymodApp\\App\\Providers\\AppServiceProvider",
+        "ElymodApp\\App\\Providers\\ElyscopeServiceProvider",
+        "ElymodApp\\App\\Providers\\ModuleServiceProvider",
         "ElymodApp\\App\\Providers\\RouteServiceProvider"
       ]
     }
   },
-  "minimum-stability": "stable",
-  "config": {
-    "allow-plugins": {
-      "php-http/discovery": true
-    }
-  }
+  "minimum-stability": "stable"
 }

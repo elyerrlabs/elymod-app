@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider as Provider;
 
-class AppServiceProvider extends Provider
+class ModuleServiceProvider extends Provider
 {
     use Module;
 
@@ -25,8 +25,6 @@ class AppServiceProvider extends Provider
 
     public function boot()
     {
-        require_once __DIR__ . "/../../vendor/autoload.php";
-
         $this->registerBladeComponents();
         $this->registerMiddlewares();
         $this->loadViewsFrom(__DIR__ . "/../../resources/views", $this->generateViewPrefix());
