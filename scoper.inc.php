@@ -107,7 +107,6 @@ return [
         // '~^$~',                        // The root namespace only
         // '',   
         '~^Composer$~',
-        '~^Elyerr\\\\LaravelRuntime(?:\\\\|$)~',
     ],
     'exclude-classes' => [
         // 'ReflectionClassConstant',
