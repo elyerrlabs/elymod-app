@@ -3,6 +3,7 @@
 namespace ElymodApp\App\Providers;
 
 use ElymodApp\App\Support\Module;
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\File;
@@ -28,6 +29,8 @@ class ModuleServiceProvider extends Provider
         $this->registerBladeComponents();
         $this->registerMiddlewares();
         $this->loadViewsFrom(__DIR__ . "/../../resources/views", $this->generateViewPrefix());
+        $this->registerCommands();
+        $this->registerSchedules();
     }
 
     /**
@@ -114,7 +117,7 @@ class ModuleServiceProvider extends Provider
      * Register components
      * @return void
      */
-    public function registerBladeComponents(): void
+    protected function registerBladeComponents(): void
     {
         $path = __DIR__ . '/../View/Components';
 
@@ -152,5 +155,37 @@ class ModuleServiceProvider extends Provider
 
             Blade::component($alias, $class);
         }
+    }
+
+    /**
+     * Register commands
+     * @return void
+     */
+    protected function registerCommands(): void
+    {
+        $path = __DIR__ . "/../../app/Console/kernel.php";
+
+        if (!file_exists($path)) {
+            return;
+        }
+
+        $commands = require $path;
+
+        $this->commands($commands);
+    }
+
+    protected function registerSchedules(): void
+    {
+        $path = __DIR__ . '/../../routes/console.php';
+
+        if (!file_exists($path)) {
+            return;
+        }
+
+        $callback = require $path;
+
+        $callback(
+            $this->app->make(Schedule::class)
+        );
     }
 }
