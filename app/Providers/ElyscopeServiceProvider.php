@@ -3,9 +3,13 @@
 namespace ElymodApp\App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use ElymodApp\App\Support\Module;
+use RuntimeException;
 
 class ElyscopeServiceProvider extends ServiceProvider
 {
+    use Module;
+
     /**
      * Register services.
      */
@@ -19,6 +23,21 @@ class ElyscopeServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        require_once __DIR__ . "/../../vendor-build/autoload.php";
+        try {
+            require_once __DIR__ . '/../../vendor-build/autoload.php';
+        } catch (\Throwable $th) {
+
+            if (!$this->app->environment('production', 'staging')) {
+
+                throw new RuntimeException(
+                    sprintf(
+                        'Module "%s" is missing its compiled vendor dependencies. The "vendor-build" directory was not found. Run "elymod install" from the module root to install and build the required dependencies.',
+                        $this->getModuleName()
+                    ),
+                    $th->getCode(),
+                    $th
+                );
+            }
+        }
     }
 }
