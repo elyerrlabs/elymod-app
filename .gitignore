@@ -5,3 +5,5 @@ vendor/
 vendor-build/
 node_modules/
 installed-package.php
+composer.lock
+package-lock.json
