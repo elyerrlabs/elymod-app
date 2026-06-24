@@ -163,17 +163,74 @@ class ModuleServiceProvider extends Provider
      */
     protected function registerCommands(): void
     {
-        $path = __DIR__ . "/../../app/Console/kernel.php";
+        $path = __DIR__ . '/../../app/Console';
 
-        if (!file_exists($path)) {
+        if (!is_dir($path)) {
             return;
         }
 
-        $commands = require $path;
+        $commands = [];
+
+        $iterator = new \RecursiveIteratorIterator(
+            new \RecursiveDirectoryIterator(
+                $path,
+                \FilesystemIterator::SKIP_DOTS
+            )
+        );
+
+        foreach ($iterator as $file) {
+
+            if ($file->getExtension() !== 'php') {
+                continue;
+            }
+
+            $class = $this->resolveClassFromFile(
+                $file->getRealPath()
+            );
+
+            if (!$class) {
+                continue;
+            }
+
+            if (
+                is_subclass_of(
+                    $class,
+                    \Illuminate\Console\Command::class
+                )
+            ) {
+                $commands[] = $class;
+            }
+        }
 
         $this->commands($commands);
     }
 
+    /**
+     * Resoolve classes
+     * @param string $file
+     * @return string|null
+     */
+    protected function resolveClassFromFile(string $file): ?string
+    {
+        $contents = file_get_contents($file);
+
+        preg_match('/namespace\s+(.+?);/', $contents, $namespace);
+        preg_match('/class\s+([^\s]+)/', $contents, $class);
+
+        if (
+            empty($namespace[1]) ||
+            empty($class[1])
+        ) {
+            return null;
+        }
+
+        return $namespace[1] . '\\' . $class[1];
+    }
+
+    /**
+     * Register schedules
+     * @return void
+     */
     protected function registerSchedules(): void
     {
         $path = __DIR__ . '/../../routes/console.php';
