@@ -6,7 +6,7 @@ use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
 
-#[Signature('elymod-app:test-command')]
+#[Signature('elymod-app:module:test-command')]
 #[Description('Elymod App Test command')]
 class TestCommand extends Command
 {

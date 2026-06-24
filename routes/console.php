@@ -16,6 +16,6 @@ use Illuminate\Console\Scheduling\Schedule;
 return function (Schedule $schedule) {
 
     // example schedule
-    $schedule->command('elymod-app:test-command')->everyMinute();
+    $schedule->command('elymod-app:module:test-command')->everyMinute();
 
 };
