@@ -2,6 +2,14 @@
   "name": "elyerr/elymod-app",
   "type": "project",
   "license": "MIT",
+  "authors": [
+    {
+      "name": "Elvis Yerel Roman Concha",
+      "email": "yerel9212@yahoo.es",
+      "role": "owner",
+      "homepage": "https://github.com/elyerrlabs/elymod-app"
+    }
+  ],
   "autoload": {
     "psr-4": {
       "ElymodApp\\App\\": "app/",
