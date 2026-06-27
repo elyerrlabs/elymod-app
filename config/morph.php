@@ -27,6 +27,6 @@ return [
   */
 
   // Example morph models
-  // (new \App\Models\ElymodApp())->tag => \App\Models\ElymodApp::class,
+  //"elymod_model_tag_name" => "\ElymodApp\App\Models\ElymodApp",
 
 ];
