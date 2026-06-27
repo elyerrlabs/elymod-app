@@ -54,6 +54,11 @@ class ModuleServiceProvider extends Provider
 
             $filePath = include $file;
 
+            // Check empty files
+            if (count($filePath) == 0) {
+                continue;
+            }
+
             // Merge configs
             switch ($key) {
                 case 'rate_limit':
