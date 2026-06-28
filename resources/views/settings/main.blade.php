@@ -114,38 +114,42 @@
             </div>
 
             <!-- CACHE SECTION -->
-            <div
-                class="bg-white dark:bg-gray-800 rounded-xl shadow border border-gray-200 dark:border-gray-700 overflow-hidden">
-                <div class="px-4 sm:px-6 py-3 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700">
-                    <h2 class="text-base font-semibold text-gray-900 dark:text-white flex items-center truncate">
-                        <i class="mdi mdi-cached mr-2 text-blue-600 dark:text-blue-400 shrink-0"></i>
-                        {{ __('Cache Management') }}
-                    </h2>
-                </div>
+            @if (canAccessMenu('settings:admin:update'))
+                <div
+                    class="bg-white dark:bg-gray-800 rounded-xl shadow border border-gray-200 dark:border-gray-700 overflow-hidden">
+                    <div
+                        class="px-4 sm:px-6 py-3 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700">
+                        <h2 class="text-base font-semibold text-gray-900 dark:text-white flex items-center truncate">
+                            <i class="mdi mdi-cached mr-2 text-blue-600 dark:text-blue-400 shrink-0"></i>
+                            {{ __('Cache Management') }}
+                        </h2>
+                    </div>
 
-                <form action="{{ route('admin.settings.reload') }}" method="post" autocomplete="off" class="p-4 sm:p-6">
-                    @method('put')
-                    @csrf
-                    <input type="hidden" name="current_route" value="{{ url()->current() }}">
+                    <form action="{{ route('admin.settings.reload') }}" method="post" autocomplete="off"
+                        class="p-4 sm:p-6">
+                        @method('put')
+                        @csrf
+                        <input type="hidden" name="current_route" value="{{ url()->current() }}">
 
-                    <div class="flex items-start">
-                        <div class="shrink-0 mt-1 mr-3 text-blue-600 dark:text-blue-400">
-                            <i class="mdi mdi-information-outline text-lg shrink-0"></i>
+                        <div class="flex items-start">
+                            <div class="shrink-0 mt-1 mr-3 text-blue-600 dark:text-blue-400">
+                                <i class="mdi mdi-information-outline text-lg shrink-0"></i>
+                            </div>
+                            <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+                                {{ __('This will clear and regenerate the cache for all application settings.') }}
+                            </p>
                         </div>
-                        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
-                            {{ __('This will clear and regenerate the cache for all application settings.') }}
-                        </p>
-                    </div>
 
-                    <div class="mt-6 flex justify-end">
-                        <button type="submit"
-                            class="flex items-center px-4 sm:px-6 py-2.5 bg-green-600 dark:bg-green-700 text-white rounded-lg hover:bg-green-700 dark:hover:bg-green-800 active:bg-green-800 dark:active:bg-green-900 transition-colors text-sm sm:text-base min-h-[44px] touch-manipulation">
-                            <i class="mdi mdi-cached mr-2 text-sm shrink-0"></i>
-                            <span>{{ __('Rebuild Settings Cache') }}</span>
-                        </button>
-                    </div>
-                </form>
-            </div>
+                        <div class="mt-6 flex justify-end">
+                            <button type="submit"
+                                class="flex items-center px-4 sm:px-6 py-2.5 bg-green-600 dark:bg-green-700 text-white rounded-lg hover:bg-green-700 dark:hover:bg-green-800 active:bg-green-800 dark:active:bg-green-900 transition-colors text-sm sm:text-base min-h-[44px] touch-manipulation">
+                                <i class="mdi mdi-cached mr-2 text-sm shrink-0"></i>
+                                <span>{{ __('Rebuild Settings Cache') }}</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            @endif
         </main>
     </div>
 @endsection
