@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use ElymodApp\App\Http\Controllers\SettingsController;
 
 /**
  * Register admin routes
@@ -15,14 +16,11 @@ Route::middleware("throttle:third-party:elymod-app:admin")->group(function () {
 
 
 
-
     Route::group([
         'prefix' => 'settings',
         'as' => 'settings.'
     ], function () {
-        Route::get(
-            '/',
-            [\ElymodApp\App\Http\Controllers\SettingController::class, 'general']
-        )->name('general');
+        Route::get('/', [SettingsController::class, 'index'])->name('index');
+        Route::get('/update', [SettingsController::class, 'update'])->name('update');
     });
 });

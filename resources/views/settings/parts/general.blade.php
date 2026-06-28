@@ -3,7 +3,7 @@
     Copy this base structure to create new configuration sections
 --}}
 
-@extends('admin.settings.setting')
+@extends('ElymodApp::settings.main')
 
 @section('form')
     <div class="space-y-6">
