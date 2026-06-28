@@ -8,7 +8,7 @@
  * Rate limits are applied using the `throttle` middleware with
  * the following naming convention:
  *
- *   third-party:{module}:{rate_limit_name}
+ *   third-party:{moduleName}:{rate_limit_name}
  *
  * Example:
  *   throttle:third-party:elymod-app:web
