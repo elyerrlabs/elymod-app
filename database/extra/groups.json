@@ -10,7 +10,7 @@
     "services": [
       {
         "name": "Elymod App",
-        "description": "Top level service for admin users for elymod App",
+        "description": "Top level service for admin users for Elymod App",
         "actions": [
           {
             "name": "full",
